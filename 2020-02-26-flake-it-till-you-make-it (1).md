@@ -174,7 +174,7 @@ Repeated errors I ran into:
 
 | Digimon 1    | Digimon 2    | Digimon 3    | Total Attack | Total Memory |
 |--------------|--------------|--------------|--------------|--------------|
-| Koromon       | Kuwagamon      | Kuwagamon      | 415.9         | 15.0           |
+| Koromon       | Kuwagamon      | Kuwagamon      | 415.0         | 15.0           |
 
 # Conclusion
 
