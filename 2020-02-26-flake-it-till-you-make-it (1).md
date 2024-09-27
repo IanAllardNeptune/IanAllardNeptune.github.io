@@ -1,0 +1,184 @@
+---
+layout: post
+title: Digimon Project
+subtitle: 
+cover-img: /assets/img/Digimonimage.webp
+thumbnail-img: /assets/img/Digimonimage.webp
+share-img: /assets/img/Digimonimage.webp
+tags: [Digimon, Datasets]
+author: Ian Allard-Neptune
+---
+
+# The Digimon Project:
+
+Overall, I did the majority of this project on my own with the help of Ms. Feng and lots of Google searches for various errors or questions.
+
+## Question 1: 
+[Version of Ms. Feng's Penguin code that I used]([www.github.com](https://github.com/ifenghm/art-of-data-code/blob/6de6f067c8c39462248c60ce927fbe7b7c7b779e/unit1/lessons/penguins.py))  
+For the first question, I used the basis of Ms. Feng's code from the Penguin.py project, which essentially took a dataset and organized it into a new dictionary. I manipulated this code only to have the keys I needed to answer this first question: "Lv 50 HP", and removed the parts of her code that took averages of the values. Using Ms. Feng's code as a basis this question was pretty simple and I did not run into too many problems. 
+
+#### Here is the code:
+
+    def question1():
+        with open("/Users/ianallard-neptune/Art_Of_Data/datasets/DigimonDataset/DigiDB_Digimonlist.csv", "r") as f:
+        data = csv.DictReader(f)
+        Digimon_data = {}  
+
+        for row in data:
+            if row["Digimon"] not in Digimon_data:
+                
+                Digimon_data[row["Digimon"]] = {
+                    "Lv 50 HP": [],
+                }  
+
+            if row["Lv 50 HP"] != "NA":
+                Digimon_data[row["Digimon"]]["Lv 50 HP"].append(
+                    float(row["Lv 50 HP"])
+                )
+
+        for Digimon in Digimon_data:
+            Lv_50_HP = Digimon_data[Digimon]["Lv 50 HP"]
+            Digimon_data[Digimon]["Lv 50 HP_average"] = sum(Lv_50_HP) / len(
+                Lv_50_HP
+            )
+
+        maxc = max(Digimon_data, key=lambda x: Digimon_data[x]["Lv 50 HP_average"])
+        print(
+            f"1. The Digimon with the largest avg HP is: {maxc} at {Digimon_data[maxc]['Lv 50 HP_average']}"
+        )
+
+## Question 2: 
+
+I thought this question was the easiest of the three, and I was able to solve it entirely on my own. While I did not reference specific code in solving this function, a similar solution was possible for one of the Penguin.csv questions with the method of counting through each value of a certain key-value.
+
+#### Here is the code:
+
+    def question2(attribute, value) :
+     with open("/Users/ianallard-neptune/Art_Of_Data/datasets/DigimonDataset/DigiDB_Digimonlist.csv", "r") as f:
+            data = csv.DictReader(f)
+            count = 0
+        
+        for Digimon in data:
+            if Digimon[attribute] and Digimon[attribute] == value:
+                count = count + 1
+        print("2. The amount of " + str(attribute) + " with " + str(value) + " is: "+ str(count))
+
+## Question 3:
+
+This question was by far the most difficult of the three questions, and it took up most of my time for this project. My first solution to the problem was a hacky piece of code that essentially hard-coded assumptions of the dataset. 
+
+#### Here is the first _"hacky"_ attempt:
+
+    question3()
+
+
+     def digimonTeam() :
+         with open("/Users/ianallard-neptune/Art_Of_Data/datasets/DigimonDataset/DigiDB_Digimonlist.csv", "r") as f:
+             data = csv.DictReader(f)
+             digimonAmt = 0
+             teamNames = ""
+      
+         for Digimon in data:
+  
+             if int(Digimon["Memory"]) < int("6") and int(Digimon["Lv50 Atk"]) > int("100") and digimonAmt < 3 :
+                if digimonAmt == 0:
+                     teamNames = teamNames + Digimon["Digimon"]
+                     digimonAmt = digimonAmt + 1
+                else :
+                    teamNames = teamNames + ", " + Digimon["Digimon"]
+                    digimonAmt = digimonAmt + 1
+          
+         print("3. The team is: " + teamNames)
+
+As you can see, the code depends upon their Digimon, which have less than 6 memory and more than 100 atk. This assumption would not have always worked with a different dataset of digimon. 
+
+For example: If there was only one digimon that had >200 atk with 10 memory and all of the other digimon had <3 memory but an attack ~50.     - In this case there is a team that satisfies the question, but the constraints placed in the if statement would not catch this answer.  
+
+The other glaring issue with this piece of code is that it simply finds the first team that answers the question and not the best team. For both of these reasons, I chose to rewrite the code.
+
+### Second Attempt:
+
+In my second attempt I sought out to iterate all possible teams and find this best possible solution. After lots of difficulty...
+
+#### Here is the code:
+
+    def question3():
+    with open("/Users/ianallard-neptune/Art_Of_Data/datasets/DigimonDataset/DigiDB_Digimonlist.csv", "r") as f:
+
+        data = csv.DictReader(f)
+        Digimon_data = {}  
+        teams = []
+        
+     
+        for row in data:
+            if row["Digimon"] not in Digimon_data:
+                Digimon_data[row["Digimon"]] = {
+                    "Memory": [],
+                    "Lv50 Atk": [],
+                }
+
+            if row["Memory"] != "NA":
+                Digimon_data[row["Digimon"]]["Memory"].append(float(row["Memory"]))
+            if row["Lv50 Atk"] != "NA":
+                Digimon_data[row["Digimon"]]["Lv50 Atk"].append(float(row["Lv50 Atk"]))
+
+    
+        for Digimon1 in Digimon_data:
+            for Digimon2 in Digimon_data:
+                for Digimon3 in Digimon_data:
+                    atksum = (
+                        sum(Digimon_data[Digimon1]["Lv50 Atk"]) +
+                        sum(Digimon_data[Digimon2]["Lv50 Atk"]) +
+                        sum(Digimon_data[Digimon3]["Lv50 Atk"])
+                    )
+                    memorysum = (
+                        sum(Digimon_data[Digimon1]["Memory"]) +
+                        sum(Digimon_data[Digimon2]["Memory"]) +
+                        sum(Digimon_data[Digimon3]["Memory"])
+                    )
+              
+                    
+                 
+                    teams.append([atksum, memorysum])
+
+    valid_teams = [team for team in teams if team[1] < 16] 
+
+    if valid_teams:
+        maxatk_team = max(valid_teams, key=lambda x: x[0])  
+        print(f"Best team of Digimon: {maxatk_team[2]} with Atk: {maxatk_team[0]} and Memory: {maxatk_team[1]}")
+
+When I first attempted this solution, it was difficult for me to contextualize what parts of the Digimon dataset I needed. After a while, I concluded that I needed a nested dictionary that maps the name of each Digimon as a key to the values of the Digimon's Memory and Lv50 Atk. I made the nested dictionary in the same way for the solution to question 1. 
+
+After multiple stages of optimizing fewer lines of code, I made the nested for loops, simply adding up 3 digimons' memory and atk to make a sum and then added them to a list called teams.
+
+With the nested dictionary and nested for-loops completed, the solution was almost complete. The only part I had to finish was finding the best team. However, this was the most time-consuming part for me even if it ended up being only a few lines of code. I kept trying variations of the same code which took in the list as a for loop and completed the max function. 
+
+## Like this:
+
+        for digimon in teams :
+        if int(teams[1]) < 16 :
+            teams[1] = int(teams[1])
+            maxatk_team = max(teams, key=lambda x: x[0])
+            # maxatk_team = max(teams, key=lambda x: int(teams[x])[int(teams[4])])
+
+            print(f"Best team: {maxatk_team[2]} with Atk: {maxatk_team[0]} and Memory: {maxatk_team[1]}")
+
+Variations of this code would lead to various errors of "Float not subscriptable" and "String Indices must be integers". These were quite frustrating and took lots of Google searching to fix, but eventually, I found [This Filtering list with list]([https://stackoverflow.com/questions/18448469/python-filter-list-of-list-with-another-list]) stack overflow submission that helped immediately. With some strange-looking syntax, the basic idea is to take one list of lists with a different list that only takes the desired values. This worked perfectly for the situation I had, and after tweaking a bit, the code worked.
+
+Repeated errors I ran into: 
+[Float not subscriptable]([https://stackoverflow.com/questions/19991591/typeerror-float-object-is-not-subscriptable])  
+[String Indices must be Integers]([https://stackoverflow.com/questions/6077675/why-am-i-seeing-typeerror-string-indices-must-be-integers])
+
+
+## The final solution:
+
+| Digimon 1    | Digimon 2    | Digimon 3    | Total Attack | Total Memory |
+|--------------|--------------|--------------|--------------|--------------|
+| Koromon       | Kuwagamon      | Kuwagamon      | 415.9         | 15.0           |
+
+# Conclusion
+
+Overall, this project was exciting and helpful for familiarizing myself with sifting through data with dictionaries. The format of different questions of various difficulties under one dataset is very intriguing to me, as the questions can be answered in so many ways and often relate to each other. The project improved my Python skills overall, and I'm proud of the final product I created.
+
+
+
