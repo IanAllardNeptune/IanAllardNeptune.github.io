@@ -67,7 +67,7 @@ I thought this question was the easiest of the three, and I was able to solve it
 
 This question was by far the most difficult of the three questions, and it took up most of my time for this project. My first solution to the problem was a hacky piece of code that essentially hard-coded assumptions of the dataset. 
 
-Here is the first _"hacky"_ attempt:
+#### Here is the first _"hacky"_ attempt:
 
     question3()
 
@@ -90,9 +90,95 @@ Here is the first _"hacky"_ attempt:
           
          print("3. The team is: " + teamNames)
 
-As you can see, the code depends upon their Digimon, which have less than 6 memory and more than 100 atk. This assumption would not have always worked with a different dataset of digimon.  For example: If there was only one digimon that had >200 atk with 10 memory and all of the other digimon had <3 memory but an attack ~50. In this case there is a team that satisfies the question, but the constraints placed in the if statement would not catch this answer.  The other glaring issue with this piece of code is that it simply finds the first team that answers the question and not the best team. For both of these reasons, I chose to rewrite the code.
+As you can see, the code depends upon their Digimon, which have less than 6 memory and more than 100 atk. This assumption would not have always worked with a different dataset of digimon. 
+
+For example: If there was only one digimon that had >200 atk with 10 memory and all of the other digimon had <3 memory but an attack ~50.     - In this case there is a team that satisfies the question, but the constraints placed in the if statement would not catch this answer.  
+
+The other glaring issue with this piece of code is that it simply finds the first team that answers the question and not the best team. For both of these reasons, I chose to rewrite the code.
+
+### Second Attempt:
+
+In my second attempt I sought out to iterate all possible teams and find this best possible solution. After lots of difficulty...
+
+#### Here is the code:
+
+    def question3():
+    with open("/Users/ianallard-neptune/Art_Of_Data/datasets/DigimonDataset/DigiDB_Digimonlist.csv", "r") as f:
+
+        data = csv.DictReader(f)
+        Digimon_data = {}  
+        teams = []
+        
+     
+        for row in data:
+            if row["Digimon"] not in Digimon_data:
+                Digimon_data[row["Digimon"]] = {
+                    "Memory": [],
+                    "Lv50 Atk": [],
+                }
+
+            if row["Memory"] != "NA":
+                Digimon_data[row["Digimon"]]["Memory"].append(float(row["Memory"]))
+            if row["Lv50 Atk"] != "NA":
+                Digimon_data[row["Digimon"]]["Lv50 Atk"].append(float(row["Lv50 Atk"]))
+
+    
+        for Digimon1 in Digimon_data:
+            for Digimon2 in Digimon_data:
+                for Digimon3 in Digimon_data:
+                    atksum = (
+                        sum(Digimon_data[Digimon1]["Lv50 Atk"]) +
+                        sum(Digimon_data[Digimon2]["Lv50 Atk"]) +
+                        sum(Digimon_data[Digimon3]["Lv50 Atk"])
+                    )
+                    memorysum = (
+                        sum(Digimon_data[Digimon1]["Memory"]) +
+                        sum(Digimon_data[Digimon2]["Memory"]) +
+                        sum(Digimon_data[Digimon3]["Memory"])
+                    )
+              
+                    
+                 
+                    teams.append([atksum, memorysum])
+
+    valid_teams = [team for team in teams if team[1] < 16] 
+
+    if valid_teams:
+        maxatk_team = max(valid_teams, key=lambda x: x[0])  
+        print(f"Best team of Digimon: {maxatk_team[2]} with Atk: {maxatk_team[0]} and Memory: {maxatk_team[1]}")
+
+When I first attempted this solution, it was difficult for me to contextualize what parts of the Digimon dataset I needed. After a while, I concluded that I needed a nested dictionary that maps the name of each Digimon as a key to the values of the Digimon's Memory and Lv50 Atk. I made the nested dictionary in the same way for the solution to question 1. 
+
+After multiple stages of optimizing fewer lines of code, I made the nested for loops, simply adding up 3 digimons' memory and atk to make a sum and then added them to a list called teams.
+
+With the nested dictionary and nested for-loops completed, the solution was almost complete. The only part I had to finish was finding the best team. However, this was the most time-consuming part for me even if it ended up being only a few lines of code. I kept trying variations of the same code which took in the list as a for loop and completed the max function. 
+
+##Like this:
+
+        for digimon in teams :
+        if int(teams[1]) < 16 :
+            teams[1] = int(teams[1])
+            maxatk_team = max(teams, key=lambda x: x[0])
+            # maxatk_team = max(teams, key=lambda x: int(teams[x])[int(teams[4])])
+
+            print(f"Best team: {maxatk_team[2]} with Atk: {maxatk_team[0]} and Memory: {maxatk_team[1]}")
+
+Variations of this code would lead to various errors of "Float not subscriptable" and "String Indices must be integers". These were quite frustrating and took lots of Google searching to fix, but eventually, I found [This Filtering list with list]([https://stackoverflow.com/questions/18448469/python-filter-list-of-list-with-another-list]) stack overflow submission that helped immediately. With some strange-looking syntax, the basic idea is to take one list of lists with a different list that only takes the desired values. This worked perfectly for the situation I had, and after tweaking a bit, the code worked.
 
 Repeated errors I ran into: 
-([https://stackoverflow.com/questions/19991591/typeerror-float-object-is-not-subscriptable])
-([https://stackoverflow.com/questions/6077675/why-am-i-seeing-typeerror-string-indices-must-be-integers])
+[Float not subscriptable]([https://stackoverflow.com/questions/19991591/typeerror-float-object-is-not-subscriptable])  
+[String Indices must be Integers]([https://stackoverflow.com/questions/6077675/why-am-i-seeing-typeerror-string-indices-must-be-integers])
+
+
+## The final solution:
+
+| Digimon 1    | Digimon 2    | Digimon 3    | Total Attack | Total Memory |
+|--------------|--------------|--------------|--------------|--------------|
+| Koromon       | Kuwagamon      | Kuwagamon      | 415.9         | 15.0           |
+
+# Conclusion
+
+Overall, this project was exciting and helpful for familiarizing myself with sifting through data with dictionaries. The format of different questions of various difficulties under one dataset is very intriguing to me, as the questions can be answered in so many ways and often relate to each other. The project improved my Python skills overall, and I'm proud of the final product I created.
+
+
 
