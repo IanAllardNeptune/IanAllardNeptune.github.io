@@ -2,9 +2,9 @@
 layout: post
 title: Digimon Project
 subtitle: 
-cover-img: 
-thumbnail-img: 
-share-img: 
+cover-img: digimon.png
+thumbnail-img: digimon.png
+share-img: digimon.png
 tags: [Digimon, Datasets]
 author: Ian Allard-Neptune
 ---
