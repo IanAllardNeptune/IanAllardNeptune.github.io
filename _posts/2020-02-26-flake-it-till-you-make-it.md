@@ -2,10 +2,10 @@
 layout: post
 title: Digimon Project
 subtitle: 
-cover-img: /assets/img/path.jpg
-thumbnail-img: /assets/img/thumb.png
-share-img: /assets/img/path.jpg
-tags: [books, test]
+cover-img: /assets/img/Digimonimage.webp
+thumbnail-img: /assets/img/Digimonimage.webp
+share-img: /assets/img/Digimonimage.webp
+tags: [Digimon, Datasets]
 author: Ian Allard-Neptune
 ---
 
@@ -153,7 +153,7 @@ After multiple stages of optimizing fewer lines of code, I made the nested for l
 
 With the nested dictionary and nested for-loops completed, the solution was almost complete. The only part I had to finish was finding the best team. However, this was the most time-consuming part for me even if it ended up being only a few lines of code. I kept trying variations of the same code which took in the list as a for loop and completed the max function. 
 
-##Like this:
+## Like this:
 
         for digimon in teams :
         if int(teams[1]) < 16 :
