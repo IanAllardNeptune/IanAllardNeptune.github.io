@@ -20,7 +20,7 @@ For the first question, I used the basis of Ms. Feng's code from the Penguin.py 
 #### Here is the code:
 
     def question1():
-        with open("/Users/ianallard-neptune/Art_Of_Data/datasets/DigimonDataset/DigiDB_Digimonlist.csv", "r") as f:
+        with open("DigiDB_digimonlist.csv", "r") as f:
         data = csv.DictReader(f)
         Digimon_data = {}  
 
@@ -54,7 +54,7 @@ I thought this question was the easiest of the three, and I was able to solve it
 #### Here is the code:
 
     def question2(attribute, value) :
-     with open("/Users/ianallard-neptune/Art_Of_Data/datasets/DigimonDataset/DigiDB_Digimonlist.csv", "r") as f:
+     with open("DigiDB_digimonlist.csv", "r") as f:
             data = csv.DictReader(f)
             count = 0
         
@@ -73,7 +73,7 @@ This question was by far the most difficult of the three questions, and it took 
 
 
      def digimonTeam() :
-         with open("/Users/ianallard-neptune/Art_Of_Data/datasets/DigimonDataset/DigiDB_Digimonlist.csv", "r") as f:
+         with open("DigiDB_digimonlist.csv", "r") as f:
              data = csv.DictReader(f)
              digimonAmt = 0
              teamNames = ""
@@ -103,7 +103,7 @@ In my second attempt I sought out to iterate all possible teams and find this be
 #### Here is the code:
 
     def question3():
-    with open("/Users/ianallard-neptune/Art_Of_Data/datasets/DigimonDataset/DigiDB_Digimonlist.csv", "r") as f:
+    with open("DigiDB_digimonlist.csv", "r") as f:
 
         data = csv.DictReader(f)
         Digimon_data = {}  
@@ -136,10 +136,11 @@ In my second attempt I sought out to iterate all possible teams and find this be
                         sum(Digimon_data[Digimon2]["Memory"]) +
                         sum(Digimon_data[Digimon3]["Memory"])
                     )
+                    digimonnames = f"{Digimon1} {Digimon2} {Digimon3}"
               
                     
                  
-                    teams.append([atksum, memorysum])
+                    teams.append([atksum, memorysum, digimonnames])
 
     valid_teams = [team for team in teams if team[1] < 16] 
 
