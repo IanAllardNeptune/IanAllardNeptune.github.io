@@ -1,7 +1,7 @@
 ---
 layout: post
-title: Flake it till you make it
-subtitle: Excerpt from Soulshaping by Jeff Brown
+title: Digimon Project
+subtitle: 
 cover-img: /assets/img/path.jpg
 thumbnail-img: /assets/img/thumb.png
 share-img: /assets/img/path.jpg
@@ -9,7 +9,49 @@ tags: [books, test]
 author: Sharon Smith and Barry Simpson
 ---
 
-Under what circumstances should we step off a path? When is it essential that we finish what we start? If I bought a bag of peanuts and had an allergic reaction, no one would fault me if I threw it out. If I ended a relationship with a woman who hit me, no one would say that I had a commitment problem. But if I walk away from a seemingly secure route because my soul has other ideas, I am a flake?
+# The Digimon Project:
+
+Overall, I did the majority of this project on my own with the help of Ms. Feng and lots of Google searches for various errors or questions.
+
+## Question 1: 
+[Version of Ms. Feng's Penguin code that I used]([www.github.com](https://github.com/ifenghm/art-of-data-code/blob/6de6f067c8c39462248c60ce927fbe7b7c7b779e/unit1/lessons/penguins.py))
+For the first question, I used the basis of Ms. Feng's code from the Penguin.py project, which essentially took a dataset and organized it into a new dictionary. I manipulated this code only to have the keys I needed to answer this first question: "Lv 50 HP", and removed the parts of her code that took averages of the values.
+
+'''Python
+def question1():
+    with open("/Users/ianallard-neptune/Art_Of_Data/datasets/DigimonDataset/DigiDB_Digimonlist.csv", "r") as f:
+
+        data = csv.DictReader(f)
+        Digimon_data = {}  
+
+        for row in data:
+            if row["Digimon"] not in Digimon_data:
+                
+                Digimon_data[row["Digimon"]] = {
+                    "Lv 50 HP": [],
+                }  
+
+            if row["Lv 50 HP"] != "NA":
+                Digimon_data[row["Digimon"]]["Lv 50 HP"].append(
+                    float(row["Lv 50 HP"])
+                )
+
+        for Digimon in Digimon_data:
+            Lv_50_HP = Digimon_data[Digimon]["Lv 50 HP"]
+            Digimon_data[Digimon]["Lv 50 HP_average"] = sum(Lv_50_HP) / len(
+                Lv_50_HP
+            )
+
+        maxc = max(Digimon_data, key=lambda x: Digimon_data[x]["Lv 50 HP_average"])
+        print(
+            f"1. The Digimon with the largest avg HP is: {maxc} at {Digimon_data[maxc]['Lv 50 HP_average']}"
+        )
+'''
+
+
+Repeated errors I ran into: 
+([https://stackoverflow.com/questions/19991591/typeerror-float-object-is-not-subscriptable])
+([https://stackoverflow.com/questions/6077675/why-am-i-seeing-typeerror-string-indices-must-be-integers])
 
 The truth is that no one else can definitively know the path we are here to walk. It’s tempting to listen—many of us long for the omnipotent other—but unless they are genuine psychic intuitives, they can’t know. All others can know is their own truth, and if they’ve actually done the work to excavate it, they will have the good sense to know that they cannot genuinely know anyone else’s. Only soul knows the path it is here to walk. Since you are the only one living in your temple, only you can know its scriptures and interpretive structure.
 
