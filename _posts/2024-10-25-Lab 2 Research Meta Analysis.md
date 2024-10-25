@@ -2,9 +2,9 @@
 layout: post
 title: Research Meta Analysis
 subtitle: An analysis on a paper discussing AI in detecting mental health crises
-cover-img: /assets/img/digimon.png
-thumbnail-img: /assets/img/digimon.png
-share-img: /assets/img/digimon.png
+cover-img: /assets/img/aiimg.jpg
+thumbnail-img: /assets/img/aiimg.jpg
+share-img: /assets/img/aiimg.jpg
 tags: [Mental, AI]
 author: Ian Allard-Neptune
 ---
