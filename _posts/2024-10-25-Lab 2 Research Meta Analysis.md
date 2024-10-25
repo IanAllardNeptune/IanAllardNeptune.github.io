@@ -9,3 +9,6 @@ tags: [Mental, AI]
 author: Ian Allard-Neptune
 ---
 
+#Intro
+
+I am interested in artificial intelligence, so I chose a paper on the topic. I eventually found this paper about the effectiveness of artificial intelligence in detecting mental health crises. Specifically, the researchers made an AI model that tracks people’s social media posts and determines whether or not they are likely to have a depressive episode. 
