@@ -40,6 +40,8 @@ They went through a stringent process of only collecting public data which then 
 
 The model architecture was relatively straightforward and largely used preexisting networks for different stages, such as BERT (Bidirectional Encoder Representations from Transformers), a well-known NLP model developed by Google specialized for AI analysis of text, and established AI architectures such as the LSTM (Long Short-Term Memory networks), which specializes in sequence data. The general theme behind their model was that it largely meshed together from different pre-trained models. They used common splitting of data into training (60%), validation (20%), and test (20%). But, an interesting note from this section was how they completed the training and validation steps. They did not give specifics on how many GPUs were used in the training, but they did specify that exactly three board-certified psychiatrists "manually annotated a subset of the data (100,000 posts)!" A simple prompt from ChatGPT came up with the response that the payment for three psychiatrists costs a range of $83,350 to $250,050! Notably, the researchers state at the end of the paper that the research received no external funding! Another unexplained point in this study.
 
+![(assets/img/realmetaanalysisdata.png)]
+
 
 #### The results
 
