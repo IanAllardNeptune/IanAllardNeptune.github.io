@@ -36,7 +36,7 @@ The AI network created was a multimodal deep learning model that "[integrates] n
 ###### Data Collection, Model Development, and Validation.
 
 
-They went through a stringent process of only collecting public data which then went through phases of depersonalization to make sure the practice was ethical. The initial collecting of the data from various social media sites was made easy as most of them have built-in APIs to sift through posts on their platform.
+They went through a stringent process of only collecting public data, which then went through depersonalization phases to ensure the practice was ethical. The initial collection of data from various social media sites was accessible as most have built-in APIs to sift through posts on their platform.
 
 The model architecture was relatively straightforward and largely used preexisting networks for different stages, such as BERT (Bidirectional Encoder Representations from Transformers), a well-known NLP model developed by Google specialized for AI analysis of text, and established AI architectures such as the LSTM (Long Short-Term Memory networks), which specializes in sequence data. The general theme behind their model was that it largely meshed together from different pre-trained models. They used common splitting of data into training (60%), validation (20%), and test (20%). But, an interesting note from this section was how they completed the training and validation steps. They did not give specifics on how many GPUs were used in the training, but they did specify that exactly three board-certified psychiatrists "manually annotated a subset of the data (100,000 posts)!" A simple prompt from ChatGPT came up with the response that the payment for three psychiatrists costs a range of $83,350 to $250,050! Notably, the researchers state at the end of the paper that the research received no external funding! Another unexplained point in this study.
 
@@ -50,7 +50,13 @@ They deemed their model successful, with an 89.3% agreement rate with the expert
 The most crucial error analysis they give is the extrapolation of their false positives and negatives. Sarcasm and irony were the leading causes behind false positives, followed by hyperbolic temporary reactions to various non-serious events. For false negatives, despite an entire branch of their model dedicated to noticing the changing frequency of an individual's posts, the most common false negatives were sourced by a gradual decline in someone's mental health.
 
 
-#### Conclusion
+### Conclusion
+
+Overall, the content of this paper was exciting and proved that there is a lot of potential for AI in this field in the future. They sufficiently proved 89.3% accuracy with an almost seven-day faster response than a psychiatrist, which most certainly could save lives in the future. Personally, I could totally see a much more developed model that was built uniquely for this purpose and not just a cumulation of pre-trained models that could function as a warning system in the future. Just like the model came to its conclusion and then was verified by an expert psychiatrist, maybe there would be a system in which if the model could predict with high confidence that someone will experience a mental health episode, then a psychiatrist can verify and possibly intervene.
+
+Positive parts aside, I had some serious issues with this paper. Specifically, the paper needs more information that would make it genuinely verifiable. A glaring example would be how only two authors are cited for this paper, and neither of them has the qualifications one would expect for a research topic such as this. Additionally, no conflicts of interest were cited, and no outside funding existed. The one convincing piece of information the study gives is that an Ethics Committee approved it. While this committee may have verified them, there needs to be an explanation of the process by which someone can achieve that acceptance.
+
+Additionally, assuming the paper is ethical, it does not make the findings accurate or truthful. Logistically, taking everything into account one of two realities must be true: the paper is incorrectly credited or fake. Even the best case of the paper, being that it incorrectly cites the number of authors and the funding, hurts its credibility greatly, and other questions arise about what ulterior motives these individuals may have.
 
 
 
