@@ -33,7 +33,7 @@ The paper clearly describes the need for better research in this field, as the p
 
 The AI network created was a multimodal deep learning model that "[integrates] natural language processing and temporal analysis techniques." The model was trained on a data set of 996,452 social media posts across different social media in different languages. The method by which this paper intends to evaluate the AI's performance is by comparing its results with professional psychiatric assessments. There were three phases, including "data collection, model development, and validation".
 
-####### Data Collection, Model Development, and Validation.
+###### Data Collection, Model Development, and Validation.
 
 
 They went through a stringent process of only collecting public data which then went through phases of depersonalization to make sure the practice was ethical. The initial collecting of the data from various social media sites was made easy as most of them have built-in APIs to sift through posts on their platform.
