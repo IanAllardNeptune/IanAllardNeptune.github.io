@@ -14,7 +14,7 @@ author: Ian Allard-Neptune
 
 # Intro
 
-I am interested in artificial intelligence, so I chose a paper on the topic. I eventually found [this paper](https://www.mdpi.com/2075-4426/14/9/958)   about the effectiveness of artificial intelligence in detecting mental health crises. Specifically, the researchers made an AI model that tracks people’s social media posts and determines whether or not they are likely to have a depressive episode. 
+I went into this project seeking out a fairly clean dataset with something I'm interested in. I ended up finding this (relatively) clean  [Dataset](https://www.mdpi.com/2075-4426/14/9/958) on the NBA. It shows some of the most important NBA stats for each player in pts, reb, ast, etc. from the 1996-1997 season to the 2022-2023 season.
 
 ### The Authors
 
