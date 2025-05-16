@@ -18,3 +18,9 @@ My project is to analyze the DOGE.gov website. The DOGE department of the United
 On top of the removal of several key contracts, multiple articles and papers have exposed inaccuracies in the false claims the DOGE.gov website provides. A large portion of their websites 
 
 <div class="flourish-embed flourish-chart" data-src="visualisation/23013223"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/23013223/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
+
+
+<div class="flourish-embed flourish-chart" data-src="visualisation/23231764"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/23231764/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
+
+
+
