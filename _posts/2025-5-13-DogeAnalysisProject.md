@@ -2,9 +2,9 @@
 layout: post
 title: DOGE.gov Analysis
 subtitle: An analysis of the Doge.gov website.
-cover-img: /assets/img/aiimg.jpg
-thumbnail-img: /assets/img/aiimg.jpg
-share-img: /assets/img/aiimg.jpg
+cover-img: /assets/img/DOGEBanner.png
+thumbnail-img: /assets/img/DOGEBanner.png
+share-img: /assets/img/DOGEBanner.png
 tags: [Mental, AI]
 author: Ian Allard-Neptune
 ---
