@@ -26,7 +26,7 @@ In addition to the removal of several key contracts, multiple articles and paper
 
 ### Leases - Value/Savings
 
-<div class="flourish-embed flourish-chart" data-src="visualisation/23231764"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/23231764/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
+<div class="flourish-embed flourish-chart" data-src="visualisation/23491096"><script src="https://public.flourish.studio/resources/embed.js"></script><noscript><img src="https://public.flourish.studio/visualisation/23491096/thumbnail" width="100%" alt="chart visualization" /></noscript></div>
 
 
 The Value/Savings for the grants does not reveal much and seems as though to could be quite accurate. However, the same cannot be said for the leases. On the left side of the graph, the farthest outlier of the group "Termination Via Mass Mod" claims to save almost double what the leases are valued at. After doing further research and creating two more graphs.
